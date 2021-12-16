@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-// api key 11d3da09cb0c13434008de6f917c6f97
 
 
 function App() {
