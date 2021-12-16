@@ -23,9 +23,7 @@ function App() {
 
   useEffect(() => {
     getApi();
-    if (weather?.icon === '10n') {
-      setIcon('https://openweathermap.org/img/wn/10n@2x.png')
-    }
+    setIcon(`https://openweathermap.org/img/wn/${weather?.icon}@2x.png`)
 
   }, [weather?.icon]);
 
