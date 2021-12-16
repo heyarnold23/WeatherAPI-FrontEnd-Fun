@@ -1,1 +1,28 @@
 /* TODO Add site wide styles */
+#card{
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+#day{
+    color: grey;
+}
+
+#lowTemp{
+    color: grey;
+}
+
+#temps{
+    display: flex;
+    gap: 20px;
+}
