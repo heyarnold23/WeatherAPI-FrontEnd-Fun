@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
+import './WeatherPage.css'
 
-
-function App() {
+function WeatherPage() {
   const [weather, setWeather] = useState();
   const [icon, setIcon] = useState();
   const [highTemp, setHighTemp] = useState();
   const [lowTemp, setLowTemp] = useState();
-
-
-
 
   const getApi = async () => {
     const response = await fetch('http://api.openweathermap.org/data/2.5/weather?zip=95210,us&appid=11d3da09cb0c13434008de6f917c6f97');
@@ -58,4 +55,4 @@ function App() {
   );
 }
 
-export default App;
+export default WeatherPage;
