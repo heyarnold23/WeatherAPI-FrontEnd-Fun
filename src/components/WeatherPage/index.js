@@ -4,24 +4,27 @@ import './WeatherPage.css'
 
 function WeatherPage() {
   const [weather, setWeather] = useState();
+  const [current, setCurrent] = useState();
   const [icon, setIcon] = useState();
   const [highTemp, setHighTemp] = useState();
   const [lowTemp, setLowTemp] = useState();
 
   const getApi = async () => {
-    const response = await fetch('http://api.openweathermap.org/data/2.5/weather?zip=95210,us&appid=11d3da09cb0c13434008de6f917c6f97');
+    // const response = await fetch('http://api.openweathermap.org/data/2.5/weather?zip=95210,us&appid=11d3da09cb0c13434008de6f917c6f97');
+    const response = await fetch('https://api.openweathermap.org/data/2.5/onecall?lat=36.812995&lon=-119.742846&appid=11d3da09cb0c13434008de6f917c6f97');
     const data = await response.json();
-    console.log(data);
-    setWeather(data.weather[0])
-    setHighTemp(Math.round((data?.main?.temp_max - 273.15) * 9/5 + 32) + '°')
-    setLowTemp(Math.round((data?.main?.temp_min - 273.15) * 9/5 + 32) + '°')
+    console.log('RIGHT HERE',data);
+    setCurrent(data?.current)
+    setWeather(data)
+    setHighTemp(Math.round((current?.feels_like - 273.15) * 9/5 + 32) + '°')
+    // setLowTemp(Math.round((data?.main?.temp_min - 273.15) * 9/5 + 32) + '°')
   }
 
   useEffect(() => {
     getApi();
-    setIcon(`https://openweathermap.org/img/wn/${weather?.icon}@2x.png`)
+    setIcon(`https://openweathermap.org/img/wn/${current?.weather[0].icon}@2x.png`)
 
-  }, [weather?.icon]);
+  }, [current?.weather[0].icon]);
 
   console.log(weather);
   console.log(icon)
@@ -35,18 +38,18 @@ function WeatherPage() {
 
   return (
     <>
-      <div id='card'>
-        <span id='day'>
+      <div className='card'>
+        <span className='day'>
           {currentDay}
         </span>
-        <div id='icon'>
+        <div className='icon'>
           <img src={`${icon}`} alt="" />
         </div>
-        <div id='temps'>
-          <div id='highTemp'>
+        <div className='temps'>
+          <div className='highTemp'>
             {highTemp}
           </div>
-          <div id='lowTemp'>
+          <div className='lowTemp'>
             {lowTemp}
           </div>
         </div>
