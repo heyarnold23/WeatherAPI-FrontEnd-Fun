@@ -23,6 +23,13 @@
     color: grey;
 }
 
+.highTemp{
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+    gap: 10px;
+}
+
 .lowTemp{
     color: grey;
 }

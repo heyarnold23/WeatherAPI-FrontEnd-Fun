@@ -40,11 +40,12 @@ function WeatherPage() {
         </div>
         <div className='temps'>
           <div className='highTemp'>
+            <span>Feels Like</span>
             {highTemp}
           </div>
-          <div className='lowTemp'>
+          {/* <div className='lowTemp'>
             {lowTemp}
-          </div>
+          </div> */}
         </div>
       </div>
     </>
