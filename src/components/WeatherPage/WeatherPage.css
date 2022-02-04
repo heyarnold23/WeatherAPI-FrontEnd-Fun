@@ -1,40 +1,62 @@
+body {
+    font-family: "Roboto", sans-serif;
+}
+
 .card{
-    width: 200px;
-    height: 200px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-    border: 1px solid grey;
-    border-radius: 5px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
-.day{
-    color: grey;
+.day {
+  color: grey;
 }
 
-.tempDiv{
-    display: flex;
-    flex-direction:column;
-    text-align: center;
-    gap: 10px;
+.tempDiv {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
 }
 
-.actual{
-    color: grey;
+.actual {
+  color: grey;
 }
 
-.tempsContainer{
-    display: flex;
-    gap: 20px;
+.tempsContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.modal {
+  width: 300px;
+  height: 150px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }

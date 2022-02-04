@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import Modal from 'react-modal';
 
 import "./WeatherPage.css";
 
 function WeatherPage() {
   const [weather, setWeather] = useState();
   const [icon, setIcon] = useState();
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   const getApi = async () => {
     // const response = await fetch('http://api.openweathermap.org/data/2.5/weather?zip=95210,us&appid=11d3da09cb0c13434008de6f917c6f97');
@@ -32,8 +34,28 @@ function WeatherPage() {
     return days[day];
   };
 
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  Modal.setAppElement('#root')
+
   return (
     <>
+      <button onClick={openModal}>Somewhere else?</button>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        // contentLabel="Example Modal"
+        className="modal"
+      >
+        <div>Enter ZIP</div>
+        <button onClick={closeModal}>close</button>
+      </Modal>
       <div className="card">
         <span className="day">{getDay(weather?.current?.dt)}</span>
         <div className="icon">
