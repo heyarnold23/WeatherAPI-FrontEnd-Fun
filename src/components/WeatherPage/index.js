@@ -68,6 +68,7 @@ function WeatherPage() {
 
   return (
     <>
+      <div className="place">{place}</div>
       <button onClick={openModal}>Somewhere else?</button>
       <Modal
         isOpen={modalIsOpen}
@@ -84,7 +85,6 @@ function WeatherPage() {
         <button onClick={submitCity}>Submit</button>
         <button onClick={closeModal}>close</button>
       </Modal>
-      <div className="place">{place}</div>
       <div className="card">
         <span className="day">{getDay(weather?.current?.dt)}</span>
         <div className="icon">
