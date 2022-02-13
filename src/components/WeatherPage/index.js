@@ -10,6 +10,7 @@ function WeatherPage() {
   const [city, setCity] = useState();
   const lati = localStorage?.getItem("lati");
   const long = localStorage?.getItem("long");
+  const place = localStorage?.getItem("place");
 
   const getApi = async () => {
     const response = await fetch(
@@ -59,6 +60,7 @@ function WeatherPage() {
     const coords = data?.features[0]?.geometry?.coordinates;
     localStorage.setItem("lati", coords[1]);
     localStorage.setItem("long", coords[0]);
+    localStorage.setItem("place", data?.features[0]?.place_name);
     closeModal();
   };
 
@@ -82,6 +84,7 @@ function WeatherPage() {
         <button onClick={submitCity}>Submit</button>
         <button onClick={closeModal}>close</button>
       </Modal>
+      <div className="place">{place}</div>
       <div className="card">
         <span className="day">{getDay(weather?.current?.dt)}</span>
         <div className="icon">
