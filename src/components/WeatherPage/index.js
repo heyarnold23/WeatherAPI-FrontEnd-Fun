@@ -5,6 +5,7 @@ import "./WeatherPage.css";
 
 function WeatherPage() {
   const [weather, setWeather] = useState();
+  const [week, setWeek] = useState();
   const [icon, setIcon] = useState();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [city, setCity] = useState();
@@ -17,8 +18,9 @@ function WeatherPage() {
       `https://api.openweathermap.org/data/2.5/onecall?lat=${lati}&lon=${long}&appid=11d3da09cb0c13434008de6f917c6f97`
     );
     const data = await response.json();
-    console.log("RIGHT HERE", data);
+    console.log("RIGHT HERE", data.daily);
     setWeather(data);
+    setWeek(data?.daily);
     setIcon(
       `https://openweathermap.org/img/wn/${data?.current?.weather[0].icon}@2x.png`
     );
@@ -103,6 +105,31 @@ function WeatherPage() {
           </div>
         </div>
       </div>
+      {week?.map((item) => {
+        return (
+          <div className="">
+            <span className="day">{getDay(item?.dt)}</span>
+            <div className="icon">
+              <img src={`${icon}`} alt="" />
+            </div>
+            <div className="tempsContainer">
+              <div className="tempDiv">
+                <span>Day</span>
+                {`${Math.round(
+                  ((item?.temp?.day - 273.15) * 9) / 5 + 32
+                )}°`}
+              </div>
+              <div className="tempDiv actual">
+                <span>Night</span>
+                {`${Math.round(
+                  ((item?.temp?.eve - 273.15) * 9) / 5 + 32
+                )}°`}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+      ;
     </>
   );
 }
