@@ -73,13 +73,16 @@ function WeatherPage() {
         <button onClick={submitCity}>Submit</button>
         <button onClick={closeModal}>close</button>
       </Modal>
-      <WeatherCard weather={current}/>
-      {week?.map((item) => {
-        return (
-          <WeatherCard daily={item} />
-        );
-      })};
-
+      <div className="currentCardDiv">
+        <span>Current</span>
+        <WeatherCard weather={current} />
+      </div>
+      <span>Weekly</span>
+      <div className="cardHolderDiv">
+        {week?.map((item) => {
+          return <WeatherCard daily={item} />;
+        })}
+      </div>
     </>
   );
 }

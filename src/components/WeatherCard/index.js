@@ -12,7 +12,7 @@ export default function WeatherCard({ weather, daily }) {
 
   if (daily) {
       return(
-    <div className="">
+    <div className="card">
       <span className="day">{getDay(daily?.dt)}</span>
       <div className="icon">
         <img src={`https://openweathermap.org/img/wn/${daily?.weather[0]?.icon}@2x.png`} alt="" />
@@ -35,7 +35,6 @@ export default function WeatherCard({ weather, daily }) {
     <div className="card">
       <span className="day">{getDay(weather?.current?.dt)}</span>
       <div className="icon">
-        {/* <img src={`${icon}`} alt="" /> */}
         <img src={`https://openweathermap.org/img/wn/${weather?.current?.weather[0].icon}@2x.png`} alt="" />
       </div>
       <div className="tempsContainer">
