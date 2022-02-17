@@ -9,7 +9,6 @@ export default function WeatherCard({ weather, daily }) {
     return days[day];
   };
 
-  console.log(daily?.weather[0]?.icon);
 
   if (daily) {
       return(

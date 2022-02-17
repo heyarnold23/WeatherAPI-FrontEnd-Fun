@@ -18,7 +18,6 @@ function WeatherPage() {
       `https://api.openweathermap.org/data/2.5/onecall?lat=${lati}&lon=${long}&appid=11d3da09cb0c13434008de6f917c6f97`
     );
     const data = await response.json();
-    console.log("RIGHT HERE", data.daily);
     setCurrent(data);
     setWeek(data?.daily);
   };
