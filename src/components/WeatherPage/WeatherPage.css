@@ -2,7 +2,7 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
-.card{
+/* .card{
   width: 200px;
   height: 200px;
   background-color: white;
@@ -40,7 +40,7 @@ body {
 .tempsContainer {
   display: flex;
   gap: 20px;
-}
+} */
 
 .modal {
   width: 300px;

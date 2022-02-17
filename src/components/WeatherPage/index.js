@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
+import WeatherCard from "../WeatherCard";
 
 import "./WeatherPage.css";
 
 function WeatherPage() {
-  const [weather, setWeather] = useState();
+  const [current, setCurrent] = useState();
   const [week, setWeek] = useState();
-  const [icon, setIcon] = useState();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [city, setCity] = useState();
   const lati = localStorage?.getItem("lati");
@@ -19,11 +19,8 @@ function WeatherPage() {
     );
     const data = await response.json();
     console.log("RIGHT HERE", data.daily);
-    setWeather(data);
+    setCurrent(data);
     setWeek(data?.daily);
-    setIcon(
-      `https://openweathermap.org/img/wn/${data?.current?.weather[0].icon}@2x.png`
-    );
   };
 
   useEffect(() => {
@@ -32,15 +29,6 @@ function WeatherPage() {
       setIsOpen(true);
     }
   }, [lati, long]);
-
-  const days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
-
-  const getDay = (timestamp) => {
-    const date = new Date(timestamp * 1000);
-    // Hours part from the timestamp
-    const day = date.getDay();
-    return days[day];
-  };
 
   function openModal() {
     setIsOpen(true);
@@ -56,7 +44,6 @@ function WeatherPage() {
 
     const response = await fetch(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${modded}.json?types=place%2Cpostcode%2Caddress&access_token=pk.eyJ1IjoiaGV5YXJub2xkMjMiLCJhIjoiY2t6N3hodzluMWV6bTJvcGhsaDRoZHZoYiJ9.c5nE5KuFZ7xfQZHz-tL_uA`
-      // https://api.mapbox.com/geocoding/v5/mapbox.places/San%20Francisco.json?types=place%2Cpostcode%2Caddress&access_token=pk.eyJ1IjoiaGV5YXJub2xkMjMiLCJhIjoiY2t6N3hodzluMWV6bTJvcGhsaDRoZHZoYiJ9.c5nE5KuFZ7xfQZHz-tL_uA
     );
     const data = await response.json();
     const coords = data?.features[0]?.geometry?.coordinates;
@@ -87,49 +74,13 @@ function WeatherPage() {
         <button onClick={submitCity}>Submit</button>
         <button onClick={closeModal}>close</button>
       </Modal>
-      <div className="card">
-        <span className="day">{getDay(weather?.current?.dt)}</span>
-        <div className="icon">
-          <img src={`${icon}`} alt="" />
-        </div>
-        <div className="tempsContainer">
-          <div className="tempDiv">
-            <span>Feels Like</span>
-            {`${Math.round(
-              ((weather?.current?.feels_like - 273.15) * 9) / 5 + 32
-            )}°`}
-          </div>
-          <div className="tempDiv actual">
-            <span>Actual</span>
-            {`${Math.round(((weather?.current?.temp - 273.15) * 9) / 5 + 32)}°`}
-          </div>
-        </div>
-      </div>
+      <WeatherCard weather={current}/>
       {week?.map((item) => {
         return (
-          <div className="">
-            <span className="day">{getDay(item?.dt)}</span>
-            <div className="icon">
-              <img src={`${icon}`} alt="" />
-            </div>
-            <div className="tempsContainer">
-              <div className="tempDiv">
-                <span>Day</span>
-                {`${Math.round(
-                  ((item?.temp?.day - 273.15) * 9) / 5 + 32
-                )}°`}
-              </div>
-              <div className="tempDiv actual">
-                <span>Night</span>
-                {`${Math.round(
-                  ((item?.temp?.eve - 273.15) * 9) / 5 + 32
-                )}°`}
-              </div>
-            </div>
-          </div>
+          <WeatherCard daily={item} />
         );
-      })}
-      ;
+      })};
+
     </>
   );
 }
