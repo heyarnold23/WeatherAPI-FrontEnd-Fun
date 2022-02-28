@@ -57,7 +57,7 @@ function WeatherPage() {
   return (
     <>
       <button onClick={openModal}>Somewhere else?</button>
-      <div className="place">{place}</div>
+      <h1 className="place">{place}</h1>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -80,7 +80,7 @@ function WeatherPage() {
       <span>This coming week...</span>
       <div className="cardHolderDiv">
         {week?.map((item) => {
-          return <WeatherCard daily={item} />;
+          return <WeatherCard  key={item?.dt} daily={item} />;
         })}
       </div>
     </>
