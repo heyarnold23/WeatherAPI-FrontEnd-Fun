@@ -9,6 +9,7 @@ function WeatherPage() {
   const [week, setWeek] = useState();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [city, setCity] = useState();
+  const [loading, setLoading] = useState(true);
   const lati = localStorage?.getItem("lati");
   const long = localStorage?.getItem("long");
   const place = localStorage?.getItem("place");
@@ -20,6 +21,7 @@ function WeatherPage() {
     const data = await response.json();
     setCurrent(data);
     setWeek(data?.daily);
+    setLoading(false)
   };
 
   useEffect(() => {
@@ -40,6 +42,7 @@ function WeatherPage() {
   const submitCity = async () => {
     let cool = city?.replace(" ", "%20");
     let modded = cool.replace(",", "%2C");
+    setLoading(true)
 
     const response = await fetch(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${modded}.json?types=place%2Cpostcode%2Caddress&access_token=pk.eyJ1IjoiaGV5YXJub2xkMjMiLCJhIjoiY2t6N3hodzluMWV6bTJvcGhsaDRoZHZoYiJ9.c5nE5KuFZ7xfQZHz-tL_uA`
@@ -49,10 +52,19 @@ function WeatherPage() {
     localStorage.setItem("lati", coords[1]);
     localStorage.setItem("long", coords[0]);
     localStorage.setItem("place", data?.features[0]?.place_name);
+    setLoading(false)
     closeModal();
   };
 
   Modal.setAppElement("#root");
+
+  if (loading) {
+    return (
+      <div>
+        Loading
+      </div>
+    )
+  }
 
   return (
     <>
