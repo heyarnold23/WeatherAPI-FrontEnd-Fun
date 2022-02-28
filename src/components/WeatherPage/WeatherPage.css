@@ -32,6 +32,7 @@ body {
 
 .cardHolderDiv{
   width: 100%;
+  gap: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,4 +44,11 @@ body {
   justify-content: center;
   align-items: center;
   margin: 50px;
+}
+
+.comingWeekText{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
 }
