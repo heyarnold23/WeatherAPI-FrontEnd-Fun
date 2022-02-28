@@ -27,6 +27,7 @@ body {
   align-items: center;
   font-weight: bold;
   flex-direction: column;
+  margin: 50px;
 }
 
 .cardHolderDiv{
@@ -38,4 +39,8 @@ body {
 }
 
 .place{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
 }
