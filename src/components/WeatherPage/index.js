@@ -74,7 +74,7 @@ function WeatherPage() {
         <button onClick={closeModal}>close</button>
       </Modal>
       <div className="currentCardDiv">
-        <span style={{margin: '10px'}}>Right Now</span>
+        <span style={{margin: '15px'}}>Right Now</span>
         <WeatherCard weather={current} />
       </div>
       <span className="comingWeekText">This coming week...</span>
