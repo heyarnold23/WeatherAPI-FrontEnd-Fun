@@ -74,10 +74,10 @@ function WeatherPage() {
         <button onClick={closeModal}>close</button>
       </Modal>
       <div className="currentCardDiv">
-        <span>Current</span>
+        <span style={{margin: '25px'}}>Right Now</span>
         <WeatherCard weather={current} />
       </div>
-      <span>Weekly</span>
+      <span>This coming week...</span>
       <div className="cardHolderDiv">
         {week?.map((item) => {
           return <WeatherCard daily={item} />;
