@@ -61,8 +61,8 @@ function WeatherPage() {
 
   if (loading) {
     return (
-      <div>
-        Loading
+      <div className="modal loadingText">
+        Loading...
       </div>
     )
   }
