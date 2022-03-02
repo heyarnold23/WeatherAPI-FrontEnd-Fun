@@ -20,7 +20,8 @@ function WeatherPage() {
     );
     const data = await response.json();
     setCurrent(data);
-    setWeek(data?.daily);
+    let results = data?.daily.slice(1)
+    setWeek(results);
     setLoading(false)
   };
 
