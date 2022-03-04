@@ -20,11 +20,11 @@ export default function WeatherCard({ weather, daily }) {
       <div className="tempsContainer">
         <div className="tempDiv">
           <span>Day</span>
-          {`${Math.round(((daily?.temp?.day - 273.15) * 9) / 5 + 32)}°`}
+          {`${Math.round(((daily?.temp?.max - 273.15) * 9) / 5 + 32)}°`}
         </div>
         <div className="tempDiv actual">
           <span>Night</span>
-          {`${Math.round(((daily?.temp?.eve - 273.15) * 9) / 5 + 32)}°`}
+          {`${Math.round(((daily?.temp?.min - 273.15) * 9) / 5 + 32)}°`}
         </div>
       </div>
         </div>
