@@ -77,6 +77,7 @@ function WeatherPage() {
         // contentLabel="Example Modal"
         className="modal"
       >
+        <button className="closeButton" onClick={closeModal}>X</button>
         <div>Enter City and State</div>
         <input
           type="text"
@@ -84,7 +85,6 @@ function WeatherPage() {
           onChange={(e) => setCity(e.target.value)}
         />
         <button onClick={submitCity}>Submit</button>
-        <button onClick={closeModal}>close</button>
       </Modal>
       <div className="currentCardDiv">
         <span style={{margin: '15px'}}>Right Now</span>

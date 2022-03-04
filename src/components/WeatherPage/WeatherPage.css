@@ -22,6 +22,12 @@ body {
   margin: auto;
 }
 
+.closeButton{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .currentCardDiv{
   display: flex;
   justify-content: center;
