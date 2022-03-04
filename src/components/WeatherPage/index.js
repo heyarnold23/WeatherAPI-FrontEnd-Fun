@@ -14,6 +14,19 @@ function WeatherPage() {
   const long = localStorage?.getItem("long");
   const place = localStorage?.getItem("place");
 
+  const weatherPics = {
+    "200": 'https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80',
+    "300": 'https://images.unsplash.com/photo-1576234699886-7eb7f11aecb7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZHJpenpsZXxlbnwwfHwwfHw%3D&w=1000&q=80',
+    "500": 'https://wallpapercave.com/wp/Z0kmvgB.jpg',
+    "600": 'https://ak.picdn.net/shutterstock/videos/1805984/thumb/1.jpg',
+    "701": 'https://c1.wallpaperflare.com/preview/837/605/65/grey-sky-fog-haze.jpg',
+    "800": 'https://wallpaperaccess.com/full/1778999.jpg',
+    "801": 'https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdWR5JTIwc2t5fGVufDB8fDB8fA%3D%3D&w=1000&q=80',
+    "802": 'https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdWR5JTIwc2t5fGVufDB8fDB8fA%3D%3D&w=1000&q=80',
+    "803": 'https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdWR5JTIwc2t5fGVufDB8fDB8fA%3D%3D&w=1000&q=80',
+    "804": 'https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdWR5JTIwc2t5fGVufDB8fDB8fA%3D%3D&w=1000&q=80'
+  };
+
   const getApi = async () => {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${lati}&lon=${long}&appid=11d3da09cb0c13434008de6f917c6f97`
@@ -22,6 +35,10 @@ function WeatherPage() {
     setCurrent(data);
     let results = data?.daily.slice(0, 7)
     setWeek(results);
+    console.log(data?.current?.weather[0]?.id);
+    document.body.style.backgroundImage = `url(${weatherPics[data?.current?.weather[0]?.id]})`;
+    document.body.style.backgroundSize = `cover`;
+    document.body.style.backgroundRepeat = `no-repeat`;
     setLoading(false)
   };
 
