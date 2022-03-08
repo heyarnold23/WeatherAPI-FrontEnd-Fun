@@ -86,7 +86,7 @@ function WeatherPage() {
 
   return (
     <>
-      <button onClick={openModal}>Somewhere else?</button>
+      <button className="locationButton" onClick={openModal}>Somewhere else?</button>
       <h1 className="place">{place}</h1>
       <Modal
         isOpen={modalIsOpen}
