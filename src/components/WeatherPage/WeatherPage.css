@@ -46,11 +46,14 @@ body {
   font-weight: bold;
 }
 
-.place{
+.locationDiv{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 50px;
+  width: 5%;
+  gap: 10px;
+
 }
 
 .comingWeekText{
