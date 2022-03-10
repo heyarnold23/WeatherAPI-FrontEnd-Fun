@@ -94,7 +94,7 @@ function WeatherPage() {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         // contentLabel="Example Modal"
-        className="modal"
+        className="modal locationButton"
       >
         <button className="closeButton" onClick={closeModal}>
           X
