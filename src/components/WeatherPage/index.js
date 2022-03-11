@@ -33,9 +33,9 @@ function WeatherPage() {
     );
     const data = await response.json();
     setCurrent(data);
+    console.log(data);
     let results = data?.daily.slice(0, 7);
     setWeek(results);
-    console.log(data?.current?.weather[0]?.id);
     document.body.style.backgroundImage = `url(${
       weatherPics[data?.current?.weather[0]?.id]
     })`;
@@ -86,7 +86,7 @@ function WeatherPage() {
     <>
       <div className="locationDiv">
         <span className="place">{place}</span>
-        <button className="locationButton" onClick={openModal}>
+        <button className="glass button" onClick={openModal}>
           Somewhere else?
         </button>
       </div>
@@ -94,7 +94,7 @@ function WeatherPage() {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         // contentLabel="Example Modal"
-        className="modal locationButton"
+        className="modal glass"
       >
         <button className="closeButton" onClick={closeModal}>
           X

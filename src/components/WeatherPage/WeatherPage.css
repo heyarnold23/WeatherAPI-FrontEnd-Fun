@@ -64,18 +64,25 @@ body {
   margin: 15px;
 }
 
-.locationButton{
+.glass{
   backdrop-filter: blur(8px) saturate(180%);
   background-color: rgba(17, 25, 40, 0.2);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
   font-size: 15px;
+  color: white;
   padding: 5px;
   transition: background-color 500ms, color 500ms;
 }
 
-.locationButton:hover{
-  cursor: pointer;
+.glass:hover{
   background-color: rgba(40, 54, 78, 0.5);
-  color: white;
+}
+
+.button:hover{
+  cursor: pointer;
+}
+
+.loadingText{
+  color: black;
 }
