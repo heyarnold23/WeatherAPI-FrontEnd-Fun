@@ -84,7 +84,7 @@ function WeatherPage() {
 
   return (
     <>
-      <div className="locationDiv">
+      <div className="locationDiv glass">
         <span className="place">{place}</span>
         <button className="glass button" onClick={openModal}>
           Somewhere else?
@@ -108,10 +108,10 @@ function WeatherPage() {
         <button onClick={submitCity}>Submit</button>
       </Modal>
       <div className="currentCardDiv">
-        <span style={{ margin: "15px" }}>Right Now</span>
+        <span className="glass" style={{ margin: "15px" }}>Right Now</span>
         <WeatherCard weather={current} />
       </div>
-      <span className="comingWeekText">This coming week...</span>
+      {/* <span className="comingWeekText glass">This coming week...</span> */}
       <div className="cardHolderDiv">
         {week?.map((item) => {
           return <WeatherCard key={item?.dt} daily={item} />;
